@@ -20,6 +20,10 @@ var nGraphs = 10,
 
 var payload = initData(nGraphs,nSeries);
 var newLaps;
+
+appendData(payload,100);
+redraw();
+
 setInterval(function(){
 	newLaps = Math.round(Math.random()*nLapsRunMax+1);
 	//newLaps = newLaps + nLaps - maxLaps < 0 ?  newLaps : maxLaps - nLaps;
@@ -67,8 +71,10 @@ for (kk = 0; kk < g.length; kk++){
 	cg = g[kk];  //Current graph
 	for (ll=0; ll < cg.series.length; ll++){
 		for (mm=0; mm < cg.series[ll].data.length; mm++){
+      if ( Math.random() < 0.05){
 			//Change a bit
 			cg.series[ll].data[mm]=[mm, Math.random()];
+      }
 		}
 
 		for (mm=0; mm < n; mm++){
